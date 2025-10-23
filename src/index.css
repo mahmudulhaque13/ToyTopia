@@ -1,2 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+.my-btn {
+  @apply btn w-full bg-gradient-to-r from-orange-300 via-orange-400 to-orange-300 text-white font-semibold border-none hover:scale-105 transition-transform duration-200;
+}

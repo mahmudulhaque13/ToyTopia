@@ -1,11 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import MyContainer from "../components/MyContainer";
 import { Link } from "react-router";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebase.config";
+import { toast } from "react-toastify";
+import { FaEye } from "react-icons/fa";
+import { IoEyeOff } from "react-icons/io5";
 
 const Signup = () => {
-  const handleSignup = () => {};
+  const [show, setShow] = useState(false);
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    const email = e.target.email?.value;
+    const password = e.target.password?.value;
+    console.log("signup in", { email, password });
+
+    // if (password.length < 6) {
+    //   toast.error("Password should be at least 6 digits");
+    //   return;
+    // }
+
+    const regExp = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!regExp.test(password)) {
+      toast.error(
+        "Password must be at least 6 characters long and include at least one uppercase letter & one lowercase letter"
+      );
+      return;
+    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((res) => {
+        console.log(res);
+        toast.success("Signup successful");
+      })
+      .catch((e) => {
+        console.log(e);
+        console.log(e.code);
+        if (e.code == "auth/email-already-in-use") {
+          toast.error("User already exist in database");
+        } else if (e.code == "auth/weak-password") {
+          toast.error("Password must be at least 6 character long");
+        } else {
+          toast.error(e.message);
+        }
+      });
+  };
   return (
-    <div className="min-h-[calc(100vh-20px)] flex items-center justify-center bg-gradient-to-br from-orange-400 via-orange-300 to-orange-400">
+    <div className="min-h-[calc(100vh-20px)] flex items-center justify-center bg-gradient-to-br from-orange-300 via-orange-400 to-orange-300">
       <MyContainer>
         <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10 p-6 lg:p-10 text-white">
           <div className="max-w-lg text-center lg:text-left">
@@ -58,16 +100,20 @@ const Signup = () => {
                   Password
                 </label>
                 <input
-                  //   type={show ? "text" : "password"}
+                  type={show ? "text" : "password"}
                   name="password"
-                  placeholder="••••••••"
-                  className="input input-bordered w-full bg-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:bg-orange-300"
+                  placeholder="••••••"
+                  className="input input-bordered w-full bg-white/20 text-white placeholder-white focus:outline-none focus:ring-2 focus:bg-orange-300"
                 />
                 <span
-                  //   onClick={() => setShow(!show)}
+                  onClick={() => setShow(!show)}
                   className="absolute right-[8px] top-[36px] cursor-pointer z-50"
                 >
-                  {/* {show ? <FaEye /> : <IoEyeOff />} */}
+                  {show ? (
+                    <FaEye className="text-black" />
+                  ) : (
+                    <IoEyeOff className="text-black" />
+                  )}
                 </span>
               </div>
 
