@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MyContainer from "../components/MyContainer";
 import { Link } from "react-router";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 import { toast } from "react-toastify";
 import { FaEye } from "react-icons/fa";
@@ -12,9 +12,11 @@ const Signup = () => {
 
   const handleSignup = (e) => {
     e.preventDefault();
+    const displayName = e.target.name?.value;
+    const photoURL = e.target.photo?.value;
     const email = e.target.email?.value;
     const password = e.target.password?.value;
-    console.log("signup in", { email, password });
+    console.log("signup in", { email, password, displayName, photoURL });
 
     // if (password.length < 6) {
     //   toast.error("Password should be at least 6 digits");
@@ -31,8 +33,17 @@ const Signup = () => {
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
-        console.log(res);
-        toast.success("Signup successful");
+        updateProfile(res.user, {
+          displayName,
+          photoURL,
+        })
+          .then((res) => {
+            console.log(res);
+            toast.success("Signup successful");
+          })
+          .catch((e) => {
+            toast.error(e.message);
+          });
       })
       .catch((e) => {
         console.log(e);

@@ -2,10 +2,11 @@ import React from "react";
 import MyContainer from "./MyContainer";
 
 import MyLink from "./MyLink";
+import { Link } from "react-router";
 
 const Navbar = () => {
   return (
-    <div>
+    <div className="bg-sky-300">
       {
         <MyContainer className="flex items-center justify-between py-2">
           <figure>
@@ -30,7 +31,7 @@ const Navbar = () => {
             </li>
           </ul>
           <button className="btn bg-orange-400 text-white px-4 py-2 rounded-md font-semibold">
-            Sign In
+            <Link to={"/signin"}>Sign In</Link>
           </button>
         </MyContainer>
       }

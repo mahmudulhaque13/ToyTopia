@@ -5,11 +5,15 @@ import Profile from "../pages/Profile";
 import Toys from "../pages/Toys";
 import Signup from "../pages/Signup";
 import Signin from "../pages/Signin";
+import ToyDetails from "../pages/ToyDetails";
+import ErrorPage from "../pages/ErrorPAge";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    hydrateFallbackElement: <p>Loading...</p>,
     children: [
       {
         index: true,
@@ -30,6 +34,11 @@ export const router = createBrowserRouter([
       {
         path: "/signin",
         element: <Signin></Signin>,
+      },
+
+      {
+        path: "/toy/:toyId",
+        element: <ToyDetails></ToyDetails>,
       },
     ],
   },
