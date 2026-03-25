@@ -12,7 +12,7 @@ const Homepage = () => {
     <div>
       {
         <MyContainer>
-          <div className="flex justify-between my-5">
+          <div className="flex justify-between my-6">
             <h1 className=" font-bold text-xl">Popular Toys</h1>
             <Link className="btn btn-outline" to="/toys">
               See All Toys
