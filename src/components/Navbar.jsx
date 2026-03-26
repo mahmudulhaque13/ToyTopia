@@ -13,7 +13,7 @@ const Navbar = () => {
             {/* <img src="" alt="" /> */}
             <h3 className="font-bold text-lg text-orange-500">ToyTopia</h3>
           </figure>
-          <ul className="flex items-center gap-2.5 font-semibold">
+          <ul className="flex items-center gap-3 font-semibold">
             <li>
               <MyLink to={"/"} className="">
                 Home
