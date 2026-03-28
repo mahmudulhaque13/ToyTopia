@@ -14,7 +14,7 @@ const Homepage = () => {
         <MyContainer>
           <div className="flex justify-between my-6">
             <h1 className=" font-bold text-xl">Popular Toys</h1>
-            <Link className="btn btn-outline" to="/toys">
+            <Link className="btn" to="/toys">
               See All Toys
             </Link>
           </div>
