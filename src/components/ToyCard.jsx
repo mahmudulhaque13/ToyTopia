@@ -24,7 +24,7 @@ const ToyCard = ({ toy }) => {
                 <FaStar />
                 {rating}
               </span>
-              <Link to={`/toy/${toyId}`} className="btn btn-outline">
+              <Link to={`/toy/${toyId}`} className="btn">
                 View Details
               </Link>
             </div>
