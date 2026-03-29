@@ -10,7 +10,7 @@ const ToyCard = ({ toy }) => {
       <div>
         <div className="card bg-base-100 w-80 shadow-sm hover:scale-105 transition ease-in-out">
           <figure className="m-auto">
-            <img className="h-68 w-120" src={pictureURL} alt="" />
+            <img className="h-66 w-120" src={pictureURL} alt="" />
           </figure>
           <div className="card-body">
             <h2 className="card-title ">{toyName}</h2>
