@@ -8,7 +8,7 @@ const ToyCard = ({ toy }) => {
   return (
     <div>
       <div>
-        <div className="card bg-base-100 w-80 shadow-sm hover:scale-105 transition ease-in-out">
+        <div className="card bg-base-100 w-82 shadow-sm hover:scale-105 transition ease-in-out">
           <figure className="m-auto">
             <img className="h-66 w-120" src={pictureURL} alt="" />
           </figure>
