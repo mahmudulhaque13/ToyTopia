@@ -163,7 +163,7 @@ const Signin = () => {
                   Continue with Google
                 </button>
 
-                <p className="text-center text-sm text-white/80 mt-3">
+                <p className="text-center text-sm text-white/80 mt-4">
                   Don’t have an account?{" "}
                   <Link
                     to="/signup"
