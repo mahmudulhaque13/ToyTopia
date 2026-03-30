@@ -30,7 +30,7 @@ const Navbar = () => {
               </MyLink>
             </li>
           </ul>
-          <button className="btn bg-orange-500 text-white px-5 py-2 rounded-md font-semibold">
+          <button className="btn bg-orange-500 text-white px-5 py-3 rounded-md font-semibold">
             <Link to={"/signin"}>Sign In</Link>
           </button>
         </MyContainer>
